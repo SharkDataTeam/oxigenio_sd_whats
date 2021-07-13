@@ -53,6 +53,7 @@ const client = new Client({
 });
 
 client.on('message', msg => {
+  if(msg.id.remote != "status@broadcast"){
     console.log("foi: entrou ")
     var config = {
         url: "",
@@ -64,14 +65,17 @@ client.on('message', msg => {
     
     console.log("foi: " + JSON.stringify(msg))
     
-   axios.post("https://oxigenio.sharkdata.com.br/api/WhatsWeb/Receberheruku", config)
-   //axios.post("https://0e6aa7d50090.ngrok.io/api/WhatsWeb/Receberheruku", config)
+    axios.post("https://oxigenio.sharkdata.com.br/api/WhatsWeb/Receberheruku", config)
+    //axios.post("https://0e6aa7d50090.ngrok.io/api/WhatsWeb/Receberheruku", config)
         .then(function (response) {
             console.log(JSON.stringify(response.data));
         })
         .catch(function (error) {
             console.log(error);
         });
+  } else {
+    console.log("Mensagem do Status!!");
+  }
 });
 
 client.initialize();
