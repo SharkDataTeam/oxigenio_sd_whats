@@ -37,19 +37,8 @@ app.get('/', (req, res) => {
 const client = new Client({
   restartOnAuthFail: true,
   puppeteer: {
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--single-process', // <- this one doesn't works in Windows
-      '--disable-gpu'
-    ],
+    browserWSEndpoint: `ws://localhost:3000`
   },
-  session: sessionCfg
 });
 
 client.on('message', msg => {
@@ -63,7 +52,7 @@ client.on('message', msg => {
     };
     
     console.log("foi: " + JSON.stringify(msg))
-    
+
    axios.post("https://oxigenio.sharkdata.com.br/api/WhatsWeb/Receberheruku", config)
    //axios.post("https://0e6aa7d50090.ngrok.io/api/WhatsWeb/Receberheruku", config)
         .then(function (response) {
