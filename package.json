@@ -27,9 +27,9 @@
     "whatsapp-web.js": "^1.13.2"
   },
   "engines": {
-    "node": "v12.10.0"
+    "node": "v14.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.12"
   }
 }
